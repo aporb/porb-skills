@@ -2,11 +2,8 @@
 name: life-os
 description: "Continuous always-on dashboard at http://localhost:9876/. Replaces /weekly-knockout and /ceo-briefing with a single OODA-framed (Observe / Orient / Decide / Act) dashboard backed by a producer-cache-consumer kernel."
 ---
----
-name: life-os
-description: "Skill: life-os"
----# life-os
 
+# life-os
 Tier C (CEO-direct). Continuous always-on dashboard at http://localhost:9876/.
 
 Replaces `/weekly-knockout` and `/ceo-briefing` with a single OODA-framed (Observe / Orient / Decide / Act) dashboard backed by a hardened producer-cache-consumer kernel.

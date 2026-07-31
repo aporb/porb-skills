@@ -84,9 +84,8 @@ Terse status, evidence-backed.
 
 ## Status
 
-This skill is a **stub** as of 2026-04-27 — the protocol is documented and the wiki schema (SCHEMA.md v2) supports it, but the directory layout (`syntheses/`, `_drafts/`) was just created today and has 0 pages. First production use will exercise the `synthesis` action when a session generates an insight worth filing.
+This skill was created 2026-04-27 and is operational. The companion validator (`wiki/scripts/validate.py`) and index-generator (`wiki/scripts/build-indices.py`) exist and are wired into `henry-wiki-status.sh`. The promotion flow runs at agent-time; no separate Python entry point.
 
-The companion validator (`wiki/scripts/validate.py`) and index-generator (`wiki/scripts/build-indices.py`) exist and are wired into `henry-wiki-status.sh`. The promotion flow itself runs in this skill at agent-time; no separate Python entry point.
 
 ## Related
 
