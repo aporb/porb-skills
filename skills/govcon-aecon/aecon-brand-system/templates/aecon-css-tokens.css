@@ -1,0 +1,44 @@
+/* =========================================
+   AECON BRAND DESIGN TOKENS — copy into :root
+   For self-contained HTML deliverables.
+   Uses web red #C8102E for UI elements, logo red #E51937 for branding.
+   ========================================= */
+:root{
+  /* Reds */
+  --aecon-red:#E51937;       /* Logo/print/branding */
+  --aecon-red-dark:#C8102E;  /* Web UI (headings, links, CTAs) */
+
+  /* Neutrals */
+  --charcoal:#252525;        /* Dark text, headings */
+  --body-gray:#464646;       /* Default body text */
+  --silver:#747679;          /* Secondary text, grey CTAs */
+  --mid-gray:#707070;        /* Footer, metadata */
+  --border-gray:#EAEAEA;     /* Subtle borders */
+
+  /* Accent (decorative ONLY) */
+  --teal:#7DC4CC;            /* Thin dividers only — never text/buttons/bg */
+
+  /* Surfaces */
+  --white:#FFFFFF;
+  --bg-light:#FAFAFA;
+  --bg-alt:#F7F7F7;
+
+  /* Typography */
+  --sans:"Univers","Univers LT Pro","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Monaco,Consolas,monospace;
+}
+
+/* WCAG AA contrast fix: --silver on --bg-alt is ~3.9:1 (fails 4.5:1).
+   For secondary text on light backgrounds, darken to: */
+/* --silver-accessible: #64666A;  (4.5:1+ on #FAFAFA) */
+
+/* Red accent usage: never more than 15% of any layout.
+   Red is for: logo, eyebrow labels, accent borders, CTAs, key stats.
+   Charcoal is for: headings, dark backgrounds, primary text. */
+
+/* Logo embedding for self-contained HTML:
+   The Aecon logo (logo-aecon-red.png, 9.7KB) can be inlined as base64
+   to keep the file portable. Use:
+   <img src="data:image/png;base64,..." alt="Aecon">
+   Read from: /data/nextcloud/data/amyn/files/briefings/aecon-assets/logo-aecon-red.png
+*/
