@@ -1,0 +1,107 @@
+# Cron Job Schedule for Compliance Artifact Governance
+# Version: 1.0.0 | Last updated: 2026-07-16
+
+jobs:
+  daily:
+    - id: "eo-omb-monitor"
+      name: "EO/OMB Standards Monitor"
+      schedule: "0 10 * * 1-5"
+      type: "script-only"
+      script: "eo-omb-monitor.py"
+      no_agent: true
+      deliver: "discord:<compliance_channel_id>"
+
+    - id: "artifact-health-check"
+      name: "Artifact Registry Health Check"
+      schedule: "0 7 * * *"
+      type: "script-only"
+      script: "artifact-health-check.py"
+      no_agent: true
+      deliver: "local"
+
+    - id: "confidence-trending"
+      name: "Confidence Score Trending"
+      schedule: "0 8 * * *"
+      type: "script-only"
+      script: "confidence-trending.py"
+      no_agent: true
+      deliver: "discord:<compliance_channel_id>"
+
+  weekly:
+    - id: "nist-standards-monitor"
+      name: "NIST Standards Change Detection"
+      schedule: "0 9 * * 1"
+      type: "agent"
+      skills: ["cmmc-l2-compliance-toolkit", "fedramp-vendor-research"]
+
+    - id: "fedramp-standards-monitor"
+      name: "FedRAMP Standards Monitor"
+      schedule: "0 9 * * 2"
+      type: "agent"
+      skills: ["fedramp-vendor-research"]
+
+    - id: "cmmc-standards-monitor"
+      name: "CMMC Standards Monitor"
+      schedule: "0 9 * * 3"
+      type: "agent"
+      skills: ["cmmc-l2-compliance-toolkit"]
+
+    - id: "dfars-standards-monitor"
+      name: "DFARS Standards Monitor"
+      schedule: "0 9 * * 4"
+      type: "agent"
+      skills: ["cmmc-l2-compliance-toolkit"]
+
+    - id: "pipeline-health"
+      name: "Pipeline Health Review"
+      schedule: "0 17 * * 5"
+      type: "agent"
+
+    - id: "artifact-staleness"
+      name: "Artifact Staleness Sweep"
+      schedule: "0 9 * * 6"
+      type: "script-only"
+      script: "artifact-staleness.py"
+      no_agent: true
+
+  monthly:
+    - id: "cross-standard-audit"
+      name: "Monthly Cross-Standard Audit"
+      schedule: "0 9 1 * *"
+      type: "agent"
+      skills: ["cmmc-l2-compliance-toolkit", "fedramp-vendor-research"]
+      timeout: 900
+
+    - id: "corpus-consistency"
+      name: "Full Corpus Consistency Check"
+      schedule: "0 9 15 * *"
+      type: "agent"
+      skills: ["cmmc-l2-compliance-toolkit"]
+      timeout: 1200
+
+    - id: "registry-cleanup"
+      name: "Registry Cleanup"
+      schedule: "0 9 28 * *"
+      type: "script-only"
+      script: "registry-cleanup.py"
+      no_agent: true
+
+  quarterly:
+    - id: "quarterly-full-audit"
+      name: "Quarterly Full Corpus Re-Validation"
+      schedule: "0 9 1 1,4,7,10 *"
+      type: "agent"
+      skills: ["cmmc-l2-compliance-toolkit", "fedramp-vendor-research", "multi-agent-judge-loop"]
+      timeout: 3600
+
+    - id: "quarterly-pipeline-tuning"
+      name: "Quarterly Pipeline Tuning Review"
+      schedule: "0 9 2 1,4,7,10 *"
+      type: "agent"
+      timeout: 600
+
+    - id: "quarterly-adversarial-rotation"
+      name: "Quarterly Adversarial Persona Rotation"
+      schedule: "0 9 3 1,4,7,10 *"
+      type: "agent"
+      timeout: 600

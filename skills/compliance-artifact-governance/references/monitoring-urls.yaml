@@ -1,0 +1,81 @@
+# Monitoring URL Inventory for Compliance Standards Change Detection
+# Version: 1.0.0 | Last updated: 2026-07-16
+
+monitors:
+  nist_800_53:
+    - url: "https://csrc.nist.gov/pubs/sp/800/53/"
+      schedule: "every Monday at 9am ET"
+      goal: "Alert when a new revision, update, public draft, or errata of SP 800-53 is posted."
+      hermetic_cron: "0 9 * * 1"
+      tier: 1
+      category: "NIST"
+
+  nist_800_171:
+    - url: "https://csrc.nist.gov/pubs/sp/800/171/"
+      schedule: "every Monday at 9am ET"
+      goal: "Alert when a new revision, update, supplemental guidance, or errata of SP 800-171 is posted."
+      hermetic_cron: "0 9 * * 1"
+      tier: 1
+      category: "NIST"
+
+  fedramp:
+    - url: "https://fedramp.gov/2026/"
+      schedule: "every Tuesday at 9am ET"
+      goal: "Alert when new RFCs are published, terminology changes are announced, or transition dates updated."
+      hermetic_cron: "0 9 * * 2"
+      tier: 1
+      category: "FedRAMP"
+    - url: "https://marketplace.fedramp.gov/products/"
+      schedule: "every Tuesday at 9am ET"
+      goal: "Alert when Marketplace structure changes, new filter categories appear, or terminology banner updates."
+      hermetic_cron: "0 9 * * 2"
+      tier: 1
+      category: "FedRAMP"
+
+  cmmc:
+    - url: "https://dodcio.defense.gov/CMMC/"
+      schedule: "every Wednesday at 9am ET"
+      goal: "Alert when new scoping guides, CAP documents, or program updates are posted."
+      hermetic_cron: "0 9 * * 3"
+      tier: 1
+      category: "CMMC"
+
+  dfars:
+    - url: "https://www.law.cornell.edu/cfr/text/48/252.204-7012"
+      schedule: "every Thursday at 9am ET"
+      goal: "Alert when DFARS 252.204-7012 text changes."
+      hermetic_cron: "0 9 * * 4"
+      tier: 1
+      category: "DFARS"
+    - url: "https://www.law.cornell.edu/cfr/text/48/252.204-7021"
+      schedule: "every Thursday at 9am ET"
+      goal: "Alert when DFARS 252.204-7021 CMMC certification requirements change."
+      hermetic_cron: "0 9 * * 4"
+      tier: 1
+      category: "DFARS"
+
+  executive:
+    - url: "https://www.federalregister.gov/"
+      schedule: "every weekday at 10am ET"
+      goal: "Alert when new EOs, proposed rules, or final rules mentioning FedRAMP, CMMC, cybersecurity, or federal IT are published."
+      hermetic_cron: "0 10 * * 1-5"
+      tier: 1
+      category: "Executive"
+
+  regulatory_mirrors:
+    - url: "https://www.law.cornell.edu/cfr/text/32/part-170"
+      schedule: "every Wednesday at 9am ET"
+      goal: "Alert when 32 CFR Part 170 (CMMC regulation) is amended."
+      hermetic_cron: "0 9 * * 3"
+      tier: 1
+      category: "CMMC"
+
+blocked_sources:
+  - name: "CMMC Scoping Guide L2"
+    url: "https://dodcio.defense.gov/Portals/0/Documents/CMMC/ScopingGuideL2v2.pdf"
+    reason: "DoD CIO bot detection"
+    workaround: "Manual download via corporate browser"
+  - name: "CMMC Assessment Process (CAP) L2"
+    url: "https://dodcio.defense.gov/Portals/0/Documents/CMMC/CAP-Level2-Version-2-13.pdf"
+    reason: "DoD CIO bot detection"
+    workaround: "Manual download via corporate browser"

@@ -1,0 +1,127 @@
+# Validation Gate Criteria Schemas
+# Version: 1.0.0 | Last updated: 2026-07-16
+#
+# These schemas define the exact criteria, output formats, and scoring
+# methodologies for each validation gate in the compliance artifact pipeline.
+
+gates:
+
+  gate_1_technical_accuracy:
+    name: "Technical Accuracy Review"
+    persona: "Senior C3PAO assessor with 10+ years of NIST framework experience"
+    runs_in: "parallel with Gates 2 and 3"
+    criteria:
+      - id: "TA-1"
+        description: "Control IDs match the cited NIST revision"
+        severity: "P0 if mismatch"
+      - id: "TA-2"
+        description: "Regulatory citations are accurate and in effect"
+        severity: "P0 if fabricated; P1 if wrong clause number"
+      - id: "TA-3"
+        description: "Control text is verbatim from source"
+        severity: "P0 if fabricated quote"
+      - id: "TA-4"
+        description: "No fabricated or phantom citations"
+        severity: "P0 for fabricated citations"
+      - id: "TA-5"
+        description: "Dates and timelines are correct"
+        severity: "P1 if wrong date"
+    scoring:
+      base_score: 1.0
+      penalties:
+        fabricated_citation: 0.30
+        fabricated_quote: 0.30
+        wrong_revision: 0.15
+        wrong_clause_number: 0.10
+        wrong_date: 0.05
+        missing_source: 0.10
+      floor: 0.0
+
+  gate_2_consistency:
+    name: "Cross-Artifact Consistency Review"
+    persona: "Compliance program manager overseeing multiple workstreams"
+    runs_in: "parallel with Gates 1 and 3"
+    criteria:
+      - id: "CO-1"
+        description: "No contradictions with other AUTHORITATIVE artifacts"
+        severity: "P0 if direct contradiction on compliance status"
+      - id: "CO-2"
+        description: "Cross-references resolve correctly"
+        severity: "P1 if broken cross-reference"
+      - id: "CO-3"
+        description: "Evidence matrix entries align"
+        severity: "P1 if evidence mismatch"
+      - id: "CO-4"
+        description: "Naming conventions consistent"
+        severity: "P2 if naming drift"
+    scoring:
+      base_score: 1.0
+      penalties:
+        direct_contradiction: 0.20
+        broken_cross_ref: 0.10
+        evidence_mismatch: 0.10
+        naming_drift: 0.05
+      floor: 0.0
+
+  gate_3_completeness:
+    name: "Completeness Review"
+    persona: "CMMC documentation auditor performing pre-assessment review"
+    runs_in: "parallel with Gates 1 and 2"
+    criteria:
+      - id: "CP-1"
+        description: "All required sections present"
+        severity: "P0 if missing required section"
+      - id: "CP-2"
+        description: "No placeholders, stubs, or [TBD] markers"
+        severity: "P0 if placeholder in AUTHORITATIVE artifact"
+      - id: "CP-3"
+        description: "Implementation descriptions are specific (not 'See SOP')"
+        severity: "P1 if generic"
+      - id: "CP-4"
+        description: "Evidence references are complete"
+        severity: "P1 if incomplete evidence reference"
+    scoring:
+      base_score: 1.0
+      method: "ratio of present-and-valid required sections to total required sections"
+
+  gate_4_adversarial:
+    name: "Adversarial Review"
+    persona: "Hostile DIBCAC auditor + skeptical contracting officer. You are NOT here to validate. You are here to BREAK this artifact."
+    runs_in: "sequential (after Gates 1-3 all PASS)"
+    criteria:
+      - id: "AD-1"
+        description: "Would a DIBCAC auditor flag this?"
+        severity: "P0 if auditor would issue a finding"
+      - id: "AD-2"
+        description: "Would a contracting officer reject this?"
+        severity: "P0 if language triggers contractual liability"
+      - id: "AD-3"
+        description: "Framing and causation correct?"
+        severity: "P0 if misleading framing"
+      - id: "AD-4"
+        description: "Overstatement / over-claiming?"
+        severity: "P0 if over-claiming compliance status"
+      - id: "AD-5"
+        description: "Risk assessment properly caveated?"
+        severity: "P1 if missing caveats"
+    scoring:
+      method: "holistic 0.0-1.0"
+
+composite_scoring:
+  formula: "(accuracy * 0.35) + (consistency * 0.20) + (completeness * 0.15) + (adversarial * 0.30)"
+  tiers:
+    high: { range: ">= 0.85", action: "Ready for human approval" }
+    medium: { range: "0.70-0.84", action: "Surface with caveats; fix P1s first" }
+    low: { range: "0.50-0.69", action: "Return to generation; do NOT surface" }
+    reject: { range: "< 0.50", action: "Reject; investigate methodology" }
+
+special_thresholds:
+  standards_change: "Drop to LOW if citing outdated revision"
+  fabricated_citation: "Auto-REJECT"
+  cross_artifact_contradiction: "Both artifacts drop one tier"
+
+pipeline_limits:
+  max_iteration_cycles: 3
+  max_concurrent_gates: 3
+  gate_timeout_minutes: 15
+  adversarial_timeout_minutes: 25
