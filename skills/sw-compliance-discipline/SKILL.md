@@ -1,6 +1,8 @@
 ---
+
 name: sw-compliance-discipline
 description: Should-you-pursue-federal decision framework from Book 1 Chapter 7. Two-column logic - Pursue (AND-gate all 5) vs Reconsider (OR-gate any triggers delay) - plus $1.5M federal ARR floor and ConMon staffing model (A FT / B Fractional / C CaaS). Outputs gate result + 12-month cadence calendar. Use to validate compliance commitment before authorization prep or as part of /shrink-wrap Risk-Proof phase.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

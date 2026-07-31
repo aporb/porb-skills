@@ -22,11 +22,14 @@ Deploy `poolside/Laguna-S-2.1-NVFP4` on Vast.ai with vLLM + Tailscale + LiteLLM 
 
 ## Bootstrap Adjustments by GPU
 
-### 4× RTX 5090 (default)
+### 4× RTX 5090 (current active deployment)
 - `--tensor-parallel-size 4` (in bootstrap-laguna.sh)
+- `--max-model-len 262144`
+- `--enforce-eager`
+- `--max-num-seqs 8`
 - `--gpu-memory-utilization 0.85`
-- DFlash works (32 GB VRAM)
-
+- DFlash with 5 spec decode tokens (32 GB VRAM)
+- Only confirmed working host: Vast.ai host 410852
 ### 8× RTX 5060 Ti
 - `--tensor-parallel-size 8` (patch: `sed -i 's/--tensor-parallel-size 4/--tensor-parallel-size 8/'`)
 - `--gpu-memory-utilization 0.70` (16 GB VRAM — DFlash causes OOM)

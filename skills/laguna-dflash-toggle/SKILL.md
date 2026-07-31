@@ -52,10 +52,10 @@ export HF_HUB_ENABLE_HF_XET=0
 vllm serve poolside/Laguna-S-2.1-NVFP4 \
     --host 0.0.0.0 --port 8000 \
     --api-key 'KEY' \
-    --tensor-parallel-size 8 \
-    --max-model-len 131072 \
-    --max-num-seqs 4 \
-    --gpu-memory-utilization 0.70 \
+    --tensor-parallel-size 4 \
+    --max-model-len 262144 \
+    --max-num-seqs 8 \
+    --gpu-memory-utilization 0.85 \
     --enforce-eager \
     --tool-call-parser poolside_v1 \
     --reasoning-parser poolside_v1 \
@@ -89,7 +89,7 @@ Acceptance rate = accepted / drafts. Expect 40-60% for Laguna DFlash.
 nvidia-smi --query-gpu=memory.used --format=csv,noheader
 ```
 
-With DFlash at TP-8 on 5060 Ti: expect ~14 GB (85.8%). Without: ~15.6 GB (95.7%).
+With DFlash at TP-4 on 5090: expect ~28 GB/GPU. Without: ~31 GB/GPU.
 
 ## Disabling DFlash
 

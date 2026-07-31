@@ -1,6 +1,8 @@
 ---
+
 name: sw-channel-vehicle
 description: Commercial / international channel stack picker from Book 1 Chapter 14. Composes hyperscaler marketplaces (AWS / Azure / GCP / Salesforce AppExchange / AppSource) + VAR/SI partnerships + pilot-to-enterprise sales motion + named-account MSAs + (intl) AUKUS / NATO / allied frameworks + (sector) GPO / EHR marketplace channels. Picks MSA/SOW structure. Use after /sw-pricing-model for commercial / international / sector candidates. Federal candidates use /sw-clin-vehicle instead.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

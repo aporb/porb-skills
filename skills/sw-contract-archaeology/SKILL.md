@@ -1,6 +1,8 @@
 ---
+
 name: sw-contract-archaeology
 description: Contract Archaeology IP discovery from Book 1 Chapter 4. 4-step process (proposal sweep, delivery-lead interviews, repeat mapping, documentation assessment) producing scored IP inventory and 1-3 quick-win candidates. Dispatches into harvest-agent's existing 7-phase pipeline for deep work. Use when starting Harvest phase, when scoring a firm's hidden IP, or as part of /shrink-wrap.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - portfolio-or-self

@@ -1,6 +1,8 @@
 ---
+
 name: sw-pricing-model
 description: Pricing model picker from Book 1 Chapter 13. Selects Per-User / Per-Unit / Subscription / Outcome-Based. Outcome-Based requires 5 qualifying conditions ALL pass. Mandatory ConMon cost allocation (FedRAMP Mod $200K-500K/yr; High $500K-1M+/yr) factored into floor. Mandatory 3-scenario stress test (Slow / Expected / High - profitable at all 3 required). Cites Acquisition Letter MV-24-03 for GSA upfront SaaS. Use after /sw-boundaries or as part of /shrink-wrap Replicate phase.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

@@ -1,6 +1,8 @@
 ---
+
 name: sw-builder-operator
 description: Builder-Operator Mindset team assessment from Book 1 Chapter 3. 4-section assessment (Individual / Gap Analysis / Specialized Help / Go-No-Go) with strict AND-gate of 6 binary criteria and per-capability minimums. Use to validate team readiness for federal productization before investment, or as part of /shrink-wrap pre-H gate.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - team-roster

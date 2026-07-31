@@ -1,6 +1,8 @@
 ---
+
 name: sw-hill-selection
 description: Hill selection from Book 1 Chapter 6. Score Proceed candidates from S2P (Ch 5) on 4 filters (Market Access, Competitive Position, Authorization Alignment, Economics). 20-point max with viability floor 12. Outputs sequenced hill roadmap with 18-month commitment + 3-customer gate to second hill. Enforces concentration over diversification. Use after /sw-s2p-scorecard, as part of /shrink-wrap Architect phase, or to validate a Product
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate-list

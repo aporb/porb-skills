@@ -1,6 +1,8 @@
 ---
+
 name: sw-services-diagnostic
 description: Pre-HARBOR posture diagnostic from Book 1 Chapter 1. Diagnoses where a firm sits on the services-to-product spectrum across 4 categories (Revenue Mix, Labor Dependency, Recompete Concentration, Technology Leverage) and surfaces qualitative warning signs. Returns a 100-point band + posture diagnosis (Denial / Premature Exit / Overcorrection / Healthy). Use when starting a /shrink-wrap full-methodology run, when assessing a firm's productization readiness, or when triaging a portfolio member's structural posture.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - firm-or-self

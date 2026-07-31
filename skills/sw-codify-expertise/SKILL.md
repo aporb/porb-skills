@@ -1,6 +1,8 @@
 ---
+
 name: sw-codify-expertise
 description: Codification process from Book 1 Chapter 10. 4-criteria qualification gate (Repeatedly Applied / High Value / Differentiating / Transferable - 3 of 4 required) + 5-step process + SOP-to-Product bridge + MVP team (Compliance Owner non-negotiable). Outputs codification plan with 40-80 hour investment estimate. Use after /sw-survivability-arch or as part of /shrink-wrap Build phase.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

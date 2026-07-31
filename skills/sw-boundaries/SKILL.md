@@ -1,6 +1,8 @@
 ---
+
 name: sw-boundaries
 description: "4-zone product boundary from Book 1 Chapter 12. Classifies features into Zone 1 (Core, >50% demand) / Zone 2 (Configurable, >50% demand + safe) / Zone 3 (Optional Modules, 20-40% demand) / Zone 4 (Excluded, <20%). Outputs 5-CLIN structure, ATO boundary change cost ($75K-150K + 2-4 mo) for Zone 4 promotion, exception criteria (first-in-segment / reference-quality / 3x deal value), ISSO consultation gate for new data flows. Use after /sw-70-30 or as part of /shrink-wrap Build phase."
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

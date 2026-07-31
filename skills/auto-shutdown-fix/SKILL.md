@@ -15,7 +15,7 @@ Deploy fixes for Vast.ai instance auto-shutdown.sh covering: idle counter compar
 - Script path on instance: `/opt/auto-shutdown.sh`
 - Cron: `*/5 * * * * /opt/auto-shutdown.sh`
 - Vast.ai API key: `grep "^VAST_AI_API_KEY=" ~/.env.local | cut -d= -f2-` (NEVER `source ~/.env.local` — has unquoted SSH keys)
-- Launchd: `~/.vastai/destroy-46047030.plist`
+- Launchd: `~/.vastai/destroy-<INSTANCE_ID>.plist` (replace with your Vast.ai instance ID)
 
 ## Deploy cycle
 
@@ -30,7 +30,7 @@ ssh -i ~/.ssh/id_vast_ai_ed25519 -p PORT root@ssh1.vast.ai 'rm -f /tmp/idle_coun
 2. **Fail-safe**: kill vLLM, confirm "metrics unreachable — treating as active", exit 0
 3. **Metric extraction**: `curl -sf localhost:8000/metrics | grep "^vllm:request_success_total{" | awk '{s+=$2} END {print s+0}'`
 4. **Guard bypass**: if using process-age guard, touch `/tmp/vllm.log` to be old before test runs
-5. **Destroy timer**: `launchctl start destroy-46047030` then `tail ~/.vastai/destroy-timer-46047030.log`
+5. **Destroy timer**: `launchctl start destroy-<INSTANCE_ID>` then `tail ~/.vastai/destroy-timer-<INSTANCE_ID>.log`
 6. **Deploy verify**: `md5sum` both local and remote copies match
 
 ## Common pitfalls

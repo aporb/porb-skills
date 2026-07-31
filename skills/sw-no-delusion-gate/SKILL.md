@@ -1,6 +1,8 @@
 ---
+
 name: sw-no-delusion-gate
 description: Productization Without Delusion 5-filter gate from Book 1 Chapter 2. Conjunctive AND-gate (any failure halts) across TAM, Compliance Cost Reality, ATO Path Viability, Vehicle Access, Internal Capability. Also runs the productization spectrum picker (Level 1-4). Use when validating that a productization candidate is worth investment, before any meaningful capital commitment, or as part of /shrink-wrap.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - idea-or-candidate

@@ -1,6 +1,8 @@
 ---
+
 name: sw-survivability-arch
 description: Architecture for Survivability from Book 1 Chapter 9. Scores against 5 principles (Minimize Boundary / Layered + Segmented / Configuration over Customization / API-first / Environment Parity). Produces 3-bucket SSP structure (Inherited / Shared / Customer). Runs 4-rule POC readiness check. Hard gate - redesign required if 3+ principles fail. Use after /sw-authorization-route or as part of /shrink-wrap Risk-Proof phase.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

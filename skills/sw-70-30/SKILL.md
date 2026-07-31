@@ -1,6 +1,8 @@
 ---
+
 name: sw-70-30
 description: Standardization heuristic from Book 1 Chapter 11. Classifies features as must-standardize (Security / Compliance / Core / Infra+Ops / Data Models) or should-be-configurable (Workflows / Reporting / Integrations / UI / Business Rules). NOT a computed 70/30 split - presented as heuristic. Includes core-vs-surface decision rule, custom CLIN structure for unavoidable customization, integration compliance hard gate. Use after /sw-codify-expertise or as part of /shrink-wrap Build phase.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

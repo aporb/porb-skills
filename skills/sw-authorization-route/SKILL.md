@@ -1,6 +1,8 @@
 ---
+
 name: sw-authorization-route
 description: "Authorization path picker from Book 1 Chapter 8. Selects FedRAMP (LI-SaaS / Low / Moderate / High) or CMMC (L1/L2/L3) or Agency ATO for federal, SOC 2 / ISO / HITRUST / StateRAMP for commercial. Enforces Product-vs-Organization distinction, sponsor-first hard gate, AI/ML 20-30% timeline modifier, inheritance leverage check. Use after /sw-compliance-discipline or as part of /shrink-wrap Risk-Proof phase."
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate

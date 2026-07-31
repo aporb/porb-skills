@@ -1,6 +1,8 @@
 ---
+
 name: sw-s2p-scorecard
 description: Score a productization candidate on the 6 Service-to-Product Fit dimensions from Book 1 Chapter 5. Returns weighted score with threshold tier (Proceed / Investigate / Deprioritize), enforces fatal-flaw vetoes on Vehicle Access and Economic Viability, applies 5-binary threshold check, and runs cannibalization sub-section. Use when evaluating whether a service should become a product, when scoring multiple candidates, or as part of /shrink-wrap full-methodology run.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent, Skill"
 argument-hint:
   - candidate-slug

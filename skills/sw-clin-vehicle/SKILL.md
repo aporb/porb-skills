@@ -1,6 +1,8 @@
 ---
+
 name: sw-clin-vehicle
 description: Federal vehicle stack picker from Book 1 Chapter 14. Composes multi-vehicle stack (GSA MAS / OASIS+ / SEWP VI / OTA / Agency IDIQ / SBIR Phase III), picks CLIN pattern (SaaS Subscription vs Managed Service + Platform), applies 4-rule design checklist. Federal lens. Use after /sw-pricing-model or as part of /shrink-wrap Replicate phase for federal candidates. Commercial / international use /sw-channel-vehicle instead.
+parent: shrink-wrap
 allowed-tools: "Read, Grep, Glob, Write, Bash(python3 *), AskUserQuestion, Agent"
 argument-hint:
   - candidate
