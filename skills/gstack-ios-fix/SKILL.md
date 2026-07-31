@@ -1,6 +1,8 @@
 ---
+
 name: gstack-ios-fix
 description: Autonomous iOS bug fixer. (gstack)
+deprecated: true
 allowed-tools:
   - Bash
   - Read

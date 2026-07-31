@@ -1,6 +1,8 @@
 ---
+
 name: gstack-ios-qa
 description: Live-device iOS QA for SwiftUI apps. (gstack)
+deprecated: true
 allowed-tools:
   - Bash
   - Read

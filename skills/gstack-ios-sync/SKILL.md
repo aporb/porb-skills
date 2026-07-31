@@ -1,6 +1,8 @@
 ---
+
 name: gstack-ios-sync
 description: Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack)
+deprecated: true
 allowed-tools:
   - Bash
   - Read

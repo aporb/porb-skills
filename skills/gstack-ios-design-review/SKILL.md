@@ -1,6 +1,8 @@
 ---
+
 name: gstack-ios-design-review
 description: Visual design audit for iOS apps on real hardware. (gstack)
+deprecated: true
 allowed-tools:
   - Bash
   - Read

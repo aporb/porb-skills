@@ -43,7 +43,7 @@ Three constraints interact:
 | `--ak model_class=litellm` | Force standard chat completions | **Required** |
 | `--job-name <name>` | Output directory name | Yes |
 | `--n-tasks N --sample-seed S` | Deterministic subset | Optional |
-| `--env modal` | Cloud parallel (not Docker) | Optional |
+| `--agent-config '{"kwargs":{"model_class":"litellm"}}'` | Alternative to `--ak` for JSON config | Optional — use instead of `--ak` |
 
 ## Run
 
@@ -136,3 +136,29 @@ Typical per-task: ~5.9M input + ~26K output tokens. At LiteLLM proxy pricing (~$
 | **NonZeroAgentExitCodeError** | Agent failed to complete | Check trajectory for failure mode; retry |
 | **Responses API errors** | `openai/` prefix triggers `/v1/responses` | Ensure `--ak model_class=litellm` is set |
 | **Virtual key lost after restart** | LiteLLM container recreation clears token DB | Re-generate keys at `/ui` |
+
+## agents.yaml (Alternative to CLI flags)
+
+```yaml
+agents:
+  - name: mini-swe-agent
+    model_name: openai/your-model-name
+    env:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL}
+    kwargs:
+      model_class: litellm
+      cost_limit: 0
+```
+
+## Non-LiteLLM Providers
+
+**OpenRouter:** Use `openrouter/` prefix — no `model_class` override needed. The `openrouter` model class is correct.
+
+**Anthropic:** Use `anthropic/` prefix with `ANTHROPIC_API_KEY` + `ANTHROPIC_BASE_URL`.
+
+## Source References
+
+- Pier mini_swe_agent.py: https://github.com/datacurve-ai/pier/blob/main/src/pier/agents/installed/mini_swe_agent.py
+- mini-swe-agent litellm_response_model.py: https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/models/litellm_response_model.py
+- mini-swe-agent litellm_model.py: https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/models/litellm_model.py
