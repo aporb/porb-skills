@@ -1,8 +1,13 @@
 ---
 name: litellm-skill-hub-sync
 description: Sync managed skills from a git repo to OMP and PI agents via LiteLLM Skill Hub registration
+triggers:
+  - register skill on hub
+  - sync skills to agents
+  - skill hub registration
+  - liteLLM plugin
+  - plugin registration
 ---
-
 # LiteLLM Skill Hub → Agent Sync
 
 ## Architecture

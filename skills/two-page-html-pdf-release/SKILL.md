@@ -51,7 +51,7 @@ If a web font fails, switch to the specified system fallback and rerun dimension
 ## 3. Verify the PDF contract
 
 ```bash
-/opt/homebrew/bin/pdfinfo output.pdf
+pdfinfo output.pdf
 ```
 
 Require:
@@ -66,7 +66,7 @@ Require:
 Delete only stale previews for this output, then rasterize:
 
 ```bash
-/opt/homebrew/bin/pdftoppm -png -r 144 output.pdf output-page
+pdftoppm -png -r 144 output.pdf output-page
 ```
 
 Require exactly:
@@ -81,8 +81,8 @@ Inspect both pages at full size for clipping, overlap, broken glyphs, awkward wr
 ## 5. Verify text and links
 
 ```bash
-/opt/homebrew/bin/pdftotext output.pdf /tmp/output.txt
-/opt/homebrew/bin/pdfinfo -url output.pdf
+pdftotext output.pdf /tmp/output.txt
+pdfinfo -url output.pdf
 ```
 
 - Read extracted text top-to-bottom; require the intended page and module order.

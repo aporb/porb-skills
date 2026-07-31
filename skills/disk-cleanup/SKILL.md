@@ -17,14 +17,14 @@ Reclaim disk space safely and measurably. The method has three commitments:
 3. **Prefer the tool's own cache command over `rm -rf`.** pnpm hardlinks, Go's
    read-only modcache, and HuggingFace refs all break under a blind delete.
 
-This skill is macOS/APFS-specific. Its scripts live at `~/.claude/skills/disk-cleanup/`.
+This skill is macOS/APFS-specific. Its scripts live at `${CLAUDE_SKILL_DIR}/`.
 
 ## Workflow
 
 ### 1. Measure + scan
 Run the read-only scanner and read the whole output before reasoning:
 ```bash
-bash "~/.claude/skills/disk-cleanup/scripts/scan.sh"        # add --quick to skip the slow $HOME walk
+bash "${CLAUDE_SKILL_DIR}/scripts/scan.sh"        # add --quick to skip the slow $HOME walk
 ```
 It prints true free space, % full, the biggest consumers in `~`, `~/Library`,
 `Application Support`, `~/.cache`, package-manager cache sizes, known hogs,
@@ -47,8 +47,8 @@ allows max 4 options per question — split if you need more.)
 Unless Mode is "Report only", reclaim the regenerable tier. Preview first if the
 user is cautious:
 ```bash
-bash "~/.claude/skills/disk-cleanup/scripts/safe_clean.sh" --dry-run   # show what would go
-bash "~/.claude/skills/disk-cleanup/scripts/safe_clean.sh"             # do it, with measured before/after
+bash "${CLAUDE_SKILL_DIR}/scripts/safe_clean.sh" --dry-run   # show what would go
+bash "${CLAUDE_SKILL_DIR}/scripts/safe_clean.sh"             # do it, with measured before/after
 ```
 This covers package-manager caches (via tool commands), Trash, browser HTTP
 caches, and Docker dangling/build cache only. It deliberately does **not** touch
@@ -60,7 +60,7 @@ sizes, then act per `references/targets.md`:
 - **HuggingFace** — delete whole `models--<org>--<name>` dirs. Show the user the
   per-model sizes (`du -sh ~/.cache/huggingface/hub/* | sort -h`) and let them pick.
 - **Ollama** — `ollama rm` for whole models; for leftover blobs run
-  `bash "~/.claude/skills/disk-cleanup/scripts/ollama_gc.sh"` (read-only) then `--apply`.
+  bash "${CLAUDE_SKILL_DIR}/scripts/ollama_gc.sh"` (read-only) then `--apply`.
 - **Xcode** `DerivedData` (safe-ish), `iOS DeviceSupport`, `xcrun simctl delete unavailable`. Never auto-touch `Archives`.
 - **Electron app caches** — quit the app, clear only the cache subdirs (see targets.md).
 - **Docker images / Downloads / large media / stale node_modules** — list with sizes, confirm, delete.

@@ -99,7 +99,7 @@ Linked Issues: None detected. Review the PR on its own merits.
 ### Stage 0.5: Gather Repo Context
 
 Read the context-gathering playbook at `references/context.md` (path relative to
-this skill directory: `/Users/amynporb/.agents/skills/pr-review/references/context.md`).
+this skill directory: `${CLAUDE_SKILL_DIR}/references/context.md`).
 
 Follow the instructions in that file to:
 
@@ -148,7 +148,7 @@ Use `subagent()` with a parallel pattern. Each task:
    target the right patterns and the linked issues to verify requirements.
 4. **Return structured JSON** matching their schema.
 
-{skill_dir} = `/Users/amynporb/.agents/skills/pr-review`
+{skill_dir} = `${CLAUDE_SKILL_DIR}`
 
 ```typescript
 subagent({
