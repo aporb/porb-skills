@@ -1,0 +1,8 @@
+{
+  "name": "porb-skills",
+  "description": "Operational skills for OMP/PI agents — deploy, benchmark, review, PDF generation, and more.",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}

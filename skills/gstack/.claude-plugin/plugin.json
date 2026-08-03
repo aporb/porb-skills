@@ -1,0 +1,8 @@
+{
+  "name": "gstack",
+  "description": "Garry Tan gstack curated subset: CEO/Designer/Eng Manager/Release/Doc/QA opinionated skills — 18 skills",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}

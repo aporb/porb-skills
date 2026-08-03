@@ -1,0 +1,8 @@
+{
+  "name": "govcon-aecon",
+  "description": "GovCon Aecon skills: brand system, compliance briefing, deliverable patterns, deck building, engagement navigation, PPTX tools — 7 skills",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}

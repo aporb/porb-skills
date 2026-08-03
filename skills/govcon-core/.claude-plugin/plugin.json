@@ -1,0 +1,8 @@
+{
+  "name": "govcon-core",
+  "description": "GovCon core skills: capabilities briefs, entity formation, partnership assessment, sources-sought response, adversarial review, website builds, proprietary frameworks — 9 skills",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}

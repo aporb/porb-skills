@@ -1,0 +1,8 @@
+{
+  "name": "govcon-federal",
+  "description": "GovCon federal skills: proposal drafting, grant budgets, pitch decks, FedRAMP research, Federal Register, competitive landscape, opportunity research — 8 skills",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}

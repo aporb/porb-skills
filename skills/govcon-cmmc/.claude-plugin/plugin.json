@@ -1,0 +1,8 @@
+{
+  "name": "govcon-cmmc",
+  "description": "GovCon CMMC skills: L2 compliance toolkit, cloud compliance, artifact governance — 3 skills",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}

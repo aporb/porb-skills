@@ -1,0 +1,8 @@
+{
+  "name": "govcon-consulting",
+  "description": "GovCon consulting skills: assessment reports, portfolio analysis, prime pipeline, multi-persona docs, warm intake, chief-of-staff workflow — 6 skills",
+  "version": "1.0.0",
+  "skills": [
+    "."
+  ]
+}
